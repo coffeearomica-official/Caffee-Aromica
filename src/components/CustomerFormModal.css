@@ -1,0 +1,359 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Playfair+Display:wght@400;700&display=swap');
+
+/* ─── Overlay ─────────────────────────────────────────────── */
+.cf-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(20, 10, 8, 0.75);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    z-index: 1050;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+    animation: cfOverlayIn 0.25s ease;
+}
+
+@keyframes cfOverlayIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+/* ─── Modal ───────────────────────────────────────────────── */
+.cf-modal {
+    background: #fffdf9;
+    border-radius: 24px;
+    width: 100%;
+    max-width: 480px;
+    max-height: 92vh;
+    overflow-y: auto;
+    box-shadow: 0 32px 90px rgba(0, 0, 0, 0.28);
+    font-family: 'Outfit', sans-serif;
+    animation: cfModalIn 0.38s cubic-bezier(0.34, 1.56, 0.64, 1);
+    scrollbar-width: thin;
+    scrollbar-color: #c12b3a #f0e8e0;
+}
+
+@keyframes cfModalIn {
+    from {
+        opacity: 0;
+        transform: translateY(40px) scale(0.95);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* ─── Header ──────────────────────────────────────────────── */
+.cf-header {
+    background: linear-gradient(135deg, #2d1b1a 0%, #4a2c2a 100%);
+    padding: 22px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 14px;
+    border-radius: 24px 24px 0 0;
+}
+
+.cf-header-brand {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.cf-header-icon {
+    font-size: 32px;
+    line-height: 1;
+    flex-shrink: 0;
+}
+
+.cf-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 21px;
+    font-weight: 700;
+    color: white;
+    margin: 0;
+    line-height: 1.2;
+}
+
+.cf-sub {
+    margin: 3px 0 0;
+    font-size: 12px;
+    color: #e8c8b0;
+    letter-spacing: 0.3px;
+}
+
+.cf-back-icon {
+    background: rgba(255, 255, 255, 0.12);
+    border: 1.5px solid rgba(255, 255, 255, 0.25);
+    color: white;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    font-size: 20px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.25s;
+    flex-shrink: 0;
+    line-height: 1;
+}
+
+.cf-back-icon:hover {
+    background: rgba(255, 255, 255, 0.25);
+}
+
+/* ─── Order Preview Strip ─────────────────────────────────── */
+.cf-order-strip {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: linear-gradient(135deg, #fdf5ee, #fdf0e6);
+    border-bottom: 1.5px solid #f0e0d0;
+    padding: 13px 24px;
+}
+
+.cf-strip-left {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.cf-strip-icon {
+    font-size: 18px;
+}
+
+.cf-strip-text {
+    font-size: 13.5px;
+    font-weight: 500;
+    color: #5a3a36;
+}
+
+.cf-strip-total {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: #c12b3a;
+}
+
+/* ─── Form ────────────────────────────────────────────────── */
+.cf-form {
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* ─── Field ───────────────────────────────────────────────── */
+.cf-field {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+
+.cf-label {
+    font-size: 13px;
+    font-weight: 600;
+    color: #4a2c2a;
+    letter-spacing: 0.3px;
+}
+
+.cf-required {
+    color: #c12b3a;
+    margin-left: 2px;
+}
+
+/* ─── Input Wrapper ───────────────────────────────────────── */
+.cf-input-wrap {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.cf-input-icon {
+    position: absolute;
+    left: 14px;
+    font-size: 16px;
+    pointer-events: none;
+    line-height: 1;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.cf-textarea-wrap {
+    align-items: flex-start;
+}
+
+.cf-textarea-icon {
+    top: 14px;
+    transform: none;
+}
+
+/* ─── Input ───────────────────────────────────────────────── */
+.cf-input {
+    width: 100%;
+    padding: 13px 14px 13px 44px;
+    border: 1.5px solid #e8ddd8;
+    border-radius: 12px;
+    font-size: 14.5px;
+    font-family: 'Outfit', sans-serif;
+    color: #2d1b1a;
+    background: white;
+    outline: none;
+    transition: border-color 0.25s, box-shadow 0.25s;
+    box-sizing: border-box;
+}
+
+.cf-input::placeholder {
+    color: #c0a89e;
+}
+
+.cf-input:focus {
+    border-color: #c12b3a;
+    box-shadow: 0 0 0 3px rgba(193, 43, 58, 0.1);
+}
+
+.cf-textarea {
+    resize: vertical;
+    min-height: 90px;
+    line-height: 1.6;
+    padding-top: 13px;
+    align-self: stretch;
+}
+
+/* ─── Error State ─────────────────────────────────────────── */
+.cf-field--error .cf-input {
+    border-color: #e74c3c;
+    background: #fff8f8;
+}
+
+.cf-field--error .cf-input:focus {
+    box-shadow: 0 0 0 3px rgba(231, 76, 60, 0.12);
+}
+
+.cf-error-msg {
+    font-size: 12px;
+    color: #e74c3c;
+    font-weight: 500;
+    margin: 0;
+    padding-left: 4px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.cf-error-msg::before {
+    content: "⚠ ";
+}
+
+/* ─── Static Delivery Badge ──────────────────────────────── */
+.cf-delivery-badge {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    background: linear-gradient(135deg, #fdf0e6, #fde8d8);
+    border: 1.5px solid #f5cba7;
+    border-radius: 14px;
+    padding: 14px 16px;
+}
+
+.cf-delivery-badge-icon {
+    font-size: 28px;
+    flex-shrink: 0;
+    margin-top: 1px;
+    line-height: 1;
+}
+
+.cf-delivery-badge-label {
+    font-size: 14px;
+    font-weight: 700;
+    color: #8a3a1a;
+    display: block;
+    margin-bottom: 3px;
+    letter-spacing: 0.2px;
+}
+
+.cf-delivery-badge-note {
+    font-size: 12.5px;
+    color: #a05030;
+    line-height: 1.55;
+    margin: 0;
+}
+
+/* ─── Submit Button ───────────────────────────────────────── */
+.cf-submit-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    background: linear-gradient(135deg, #9a9a9a, #7a7a7a);
+    color: white;
+    border: none;
+    padding: 15px 24px;
+    border-radius: 14px;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    font-family: 'Outfit', sans-serif;
+    transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+    margin-top: 4px;
+    letter-spacing: 0.3px;
+}
+
+.cf-submit-btn--ready {
+    background: linear-gradient(135deg, #c12b3a, #8a1f29);
+    box-shadow: 0 10px 28px rgba(193, 43, 58, 0.35);
+}
+
+.cf-submit-btn--ready:hover {
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 16px 36px rgba(193, 43, 58, 0.45);
+}
+
+.cf-submit-btn--ready:active {
+    transform: translateY(-1px) scale(0.99);
+}
+
+.cf-submit-arrow {
+    font-size: 18px;
+    transition: transform 0.25s;
+}
+
+.cf-submit-btn--ready:hover .cf-submit-arrow {
+    transform: translateX(4px);
+}
+
+/* ─── Responsive ──────────────────────────────────────────── */
+@media (max-width: 520px) {
+    .cf-overlay {
+        align-items: flex-end;
+        padding: 0;
+    }
+
+    .cf-modal {
+        border-radius: 20px 20px 0 0;
+        max-height: 95vh;
+    }
+
+    .cf-header {
+        border-radius: 20px 20px 0 0;
+        padding: 18px 16px;
+    }
+
+    .cf-form {
+        padding: 18px 16px;
+    }
+
+    .cf-toggle-group {
+        flex-direction: column;
+    }
+}

@@ -1,0 +1,117 @@
+.floating-whatsapp {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    z-index: 9999;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.wa-pulse {
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    background-color: #25D366;
+    border-radius: 50%;
+    z-index: 1;
+    animation: wa-pulse-anim 2s infinite;
+}
+
+.wa-icon-container {
+    position: relative;
+    width: 60px;
+    height: 60px;
+    background-color: #25D366;
+    border-radius: 50%;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease;
+}
+
+.floating-whatsapp:hover .wa-icon-container {
+    transform: scale(1.1);
+}
+
+.wa-icon {
+    width: 35px;
+    height: 35px;
+    color: white;
+}
+
+.wa-tooltip {
+    position: absolute;
+    right: 75px;
+    background-color: #fff;
+    color: #4a2c2a;
+    padding: 8px 14px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1);
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateX(10px);
+    transition: all 0.3s ease;
+}
+
+.wa-tooltip::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: -5px;
+    transform: translateY(-50%);
+    border-width: 6px 0 6px 6px;
+    border-style: solid;
+    border-color: transparent transparent transparent #fff;
+    display: block;
+    width: 0;
+}
+
+.floating-whatsapp:hover .wa-tooltip {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+@keyframes wa-pulse-anim {
+    0% {
+        transform: scale(1);
+        opacity: 0.8;
+    }
+
+    100% {
+        transform: scale(1.6);
+        opacity: 0;
+    }
+}
+
+@media (max-width: 768px) {
+    .floating-whatsapp {
+        bottom: 14px;
+        right: 14px;
+    }
+
+    .wa-pulse,
+    .wa-icon-container {
+        width: 54px;
+        height: 54px;
+    }
+
+    .wa-icon {
+        width: 30px;
+        height: 30px;
+    }
+
+    .wa-tooltip {
+        display: none;
+    }
+}
+
+body.order-modal-open .floating-whatsapp {
+    display: none;
+}
