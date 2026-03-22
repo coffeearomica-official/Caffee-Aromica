@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
+import { emailJsConfig } from "../config/emailjs";
 import "./ContactPage.css";
 
 const initialFormState = {
@@ -40,9 +41,7 @@ const ContactPage = () => {
     const handleSubmit = async (event) => {
         event.preventDefault();
 
-        const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
-        const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
-        const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+        const { serviceId, templateId, publicKey } = emailJsConfig;
 
         if (!serviceId || !templateId || !publicKey) {
             setSubmitState({
@@ -89,7 +88,8 @@ const ContactPage = () => {
             });
 
             if (!response.ok) {
-                throw new Error("EmailJS request failed");
+                const errorText = await response.text();
+                throw new Error(errorText || "EmailJS request failed");
             }
 
             setFormData(initialFormState);
@@ -98,11 +98,16 @@ const ContactPage = () => {
                 type: "success",
                 message: "Your inquiry has been sent. Our team will get back to you soon.",
             });
-        } catch {
+        } catch (error) {
+            const errorMessage =
+                error instanceof Error && error.message
+                    ? error.message
+                    : "We could not send your inquiry right now. Please try again in a moment.";
+
             setSubmitState({
                 isSubmitting: false,
                 type: "error",
-                message: "We could not send your inquiry right now. Please try again in a moment.",
+                message: errorMessage,
             });
         }
     };
