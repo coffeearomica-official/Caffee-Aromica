@@ -333,7 +333,7 @@
 
 .om-cart-item {
     display: flex;
-    align-items: flex-start;
+    align-items: center;
     justify-content: space-between;
     gap: 8px;
     padding: 10px;
@@ -346,22 +346,42 @@
     margin-top: 8px;
 }
 
+.om-cart-item-meta {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    min-width: 0;
+    flex: 1;
+    flex-wrap: nowrap;
+}
+
 .om-cart-item p {
     margin: 0;
     color: #f6ebde;
-    font-size: 0.9rem;
+    font-size: 0.88rem;
     font-weight: 600;
-    line-height: 1.35;
+    line-height: 1.2;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .om-cart-item small {
     color: #b99770;
     font-size: 0.75rem;
+    white-space: nowrap;
+    flex-shrink: 0;
 }
 
 .om-cart-item strong {
     color: #f2cea0;
     font-size: 0.86rem;
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+.om-cart-item-total {
+    text-align: right;
 }
 
 .om-empty-cart {

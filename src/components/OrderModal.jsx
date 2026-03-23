@@ -236,11 +236,11 @@ const OrderModal = ({ onClose }) => {
                             ) : (
                                 cartItems.map((item) => (
                                     <div key={item.id} className="om-cart-item">
-                                        <div>
+                                        <div className="om-cart-item-meta">
                                             <p>{item.name}</p>
                                             <small>{item.qty} x {formatINR(item.price)}</small>
                                         </div>
-                                        <strong>{formatINR(item.qty * item.price)}</strong>
+                                        <strong className="om-cart-item-total">{formatINR(item.qty * item.price)}</strong>
                                     </div>
                                 ))
                             )}
